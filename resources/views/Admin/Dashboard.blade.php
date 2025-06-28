@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-<body>
-    <div class="sidebar__nav border-top border-left">
-        <span class="bars d-none padding-0-18"></span>
-        <a class="header__logo d-none" href="#"></a>
-        <div class="profile__info border cursor-pointer text-center">
-            <div class="avatar__img"><img src="img/pro.jpg" class="avatar___img" /></div>
-            <span class="profile__name">کاربر : رائف رحماندوست </span>
-        </div>
-
-        <ul>
-            <li class="item-li i-dashboard is-active"><a href="index.html">پیشخوان</a></li>
-            <li class="item-li i-courses"><a href="categories.html">دسته بندی‌ها</a></li>
-            <li class="item-li i-users"><a href="users.html"> کاربران</a></li>
-            <li class="item-li i-banners"><a href="banners.html">بنر ها</a></li>
-            <li class="item-li i-articles"><a href="articles.html">مقالات</a></li>
-            <li class="item-li i-comments"><a href="comments.html"> نظرات</a></li>
-        </ul>
-    </div>
+@extends('Admin.Layouts.Master')
+@section('content')
     <div class="content">
         <div class="header d-flex item-center bg-white width-100 border-bottom padding-12-30">
             <div class="header__right d-flex flex-grow-1 item-center">
@@ -27,6 +7,7 @@
                 <a class="header__logo" href="#"></a>
             </div>
             <div class="header__left d-flex flex-end item-center margin-top-2">
+
                 <div class="notification margin-15">
                     <a class="notification__icon"></a>
                     <div class="dropdown__notification">
@@ -46,20 +27,20 @@
         <div class="main-content">
             <div class="row no-gutters font-size-13 margin-bottom-10">
                 <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10 bg-red">
-                    <h3>تعداد کل مقالات</h3>
-                    <h4>200</h4>
+                    <h3> تعداد کل مقالات </h3>
+                    <h4> 200</h4>
                 </div>
                 <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10 bg-orange">
-                    <h3>تعداد دسته بندی‌ها</h3>
-                    <h4>7</h4>
+                    <h3> تعداد دسته بندی‌ها</h3>
+                    <h4> 7 </h4>
                 </div>
                 <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10 bg-green">
-                    <h3>تعداد مقالات امروز</h3>
-                    <h4>21</h4>
+                    <h3> تعداد مقالات امروز</h3>
+                    <h4> 21 </h4>
                 </div>
                 <div class="col-3 padding-20 border-radius-3 bg-white margin-bottom-10 bg-blue">
-                    <h3>تعداد مقالات فعال</h3>
-                    <h4>100</h4>
+                    <h3> تعداد مقالات فعال</h3>
+                    <h4> 100 </h4>
                 </div>
             </div>
 
@@ -70,13 +51,13 @@
                 </div>
                 <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10">
                     <h3>ثبت نام های امروز</h3>
-                    <h4>5</h4>
+                    <h4>5 </h4>
                 </div>
                 <div class="col-3 padding-20 border-radius-3 bg-white margin-left-10 margin-bottom-10">
                     <h3>تعداد کل کاربران فعال</h3>
                     <h4>51</h4>
                 </div>
-                <div class="col-3 padding-20 border-radius-3 bg-white margin-bottom-10">
+                <div class="col-3 padding-20 border-radius-3 bg-white  margin-bottom-10">
                     <h3>کاربران غیر فعال</h3>
                     <h4>19</h4>
                 </div>
@@ -106,9 +87,7 @@
                                 <td>middleware</td>
                                 <td>لاراول</td>
                                 <td class="text-success">فعال</td>
-                                <td>
-                                    <a href=""><img class="img__slideshow" src="img/laravel.jpg"
-                                            alt="" /></a>
+                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}" alt=""></a>
                                 </td>
                                 <td>1403/05/01</td>
                                 <td>
@@ -120,9 +99,7 @@
                                 <td>middleware</td>
                                 <td>لاراول</td>
                                 <td class="text-success">فعال</td>
-                                <td>
-                                    <a href=""><img class="img__slideshow" src="img/laravel.jpg"
-                                            alt="" /></a>
+                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}" alt=""></a>
                                 </td>
                                 <td>1403/05/01</td>
                                 <td>
@@ -134,9 +111,7 @@
                                 <td>middleware</td>
                                 <td>لاراول</td>
                                 <td class="text-success">فعال</td>
-                                <td>
-                                    <a href=""><img class="img__slideshow" src="img/laravel.jpg"
-                                            alt="" /></a>
+                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}" alt=""></a>
                                 </td>
                                 <td>1403/05/01</td>
                                 <td>
@@ -149,6 +124,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
