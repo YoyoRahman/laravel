@@ -21,7 +21,7 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html" title="پیشخوان">پیشخوان</a></li>
+                <li><a href="{{ asset('index') }}" title="پیشخوان">پیشخوان</a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -87,7 +87,8 @@
                                 <td>middleware</td>
                                 <td>لاراول</td>
                                 <td class="text-success">فعال</td>
-                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}" alt=""></a>
+                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}"
+                                            alt=""></a>
                                 </td>
                                 <td>1403/05/01</td>
                                 <td>
@@ -99,7 +100,8 @@
                                 <td>middleware</td>
                                 <td>لاراول</td>
                                 <td class="text-success">فعال</td>
-                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}" alt=""></a>
+                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}"
+                                            alt=""></a>
                                 </td>
                                 <td>1403/05/01</td>
                                 <td>
@@ -111,7 +113,8 @@
                                 <td>middleware</td>
                                 <td>لاراول</td>
                                 <td class="text-success">فعال</td>
-                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}" alt=""></a>
+                                <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}"
+                                            alt=""></a>
                                 </td>
                                 <td>1403/05/01</td>
                                 <td>

@@ -30,7 +30,7 @@
             <div class="tab__box">
                 <div class="tab__items">
                     <a class="tab__item is-active" href="{{ asset('index/category') }}">دسته بندی‌ها</a>
-                    <a class="tab__item" href="{{ asset('index/category/create') }}">ایجاد دسته بندی جدید</a>
+                    <a class="tab__item" href="{{ asset('index/create') }}">ایجاد دسته بندی جدید</a>
                 </div>
             </div>
 
@@ -47,45 +47,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($categories as $category)
+
                         <tr role="row">
-                            <td>1</td>
-                            <td>لاراول</td>
-                            <td class="text-success">فعال</td>
-                            <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}"
-                                        alt=""></a>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $category->title }}</td>
+                            <td class="text-success">{{ $category->status  == 0 ? " فعال" : "غیر فعال"}}</td>
+                            <td><a href=""><img class="img__slideshow" src="{{ asset('storage/' . $category->image) }}"
+                                alt=""></a>
                             </td>
-                            <td>1403/05/01</td>
+                            <td>{{ jdate( $category->created_at) }}</td>
                             <td>
                                 <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
+                                <a href="{{ route('admin.category.edit') }}" class="item-edit " title="ویرایش"></a>
                             </td>
                         </tr>
-                        <tr role="row">
-                            <td>1</td>
-                            <td>لاراول</td>
-                            <td class="text-success">فعال</td>
-                            <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}"
-                                        alt=""></a>
-                            </td>
-                            <td>1403/05/01</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                            </td>
-                        </tr>
-                        <tr role="row">
-                            <td>1</td>
-                            <td>لاراول</td>
-                            <td class="text-success">فعال</td>
-                            <td><a href=""><img class="img__slideshow" src="{{ asset('Admin/img/laravel.jpg') }}"
-                                        alt=""></a>
-                            </td>
-                            <td>1403/05/01</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                            </td>
-                        </tr>
+                        @endforeach
 
 
                     </tbody>
