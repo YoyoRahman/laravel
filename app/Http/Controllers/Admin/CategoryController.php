@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestCategory;
+use App\Http\Requests\updateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class CategoryController extends Controller
 {
@@ -15,9 +19,9 @@ class CategoryController extends Controller
     public function index()
     {
 
-         $categories = Category::all();
+        $categories = Category::all();
 
-        return view('Admin.Category.Categories' ,compact('categories'));
+        return view('Admin.Category.Categories', compact('categories'));
     }
 
     /**
@@ -58,22 +62,42 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('Admin.Category.Edit', compact('category'));
-    }
 
+
+
+        return view('Admin.category.edit', compact('category'));
+    }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(updateCategoryRequest $request, Category $category)
     {
-        //
+        $inputs = $request->all();
+        if ($request->file('image')) {
+            if ($category->image) {
+                Storage::disk('public')->delete($category->image);
+            }
+            $image = $request->file('image');
+            $imagePath = $image->store('category_image', 'public');
+            $inputs['image'] = $imagePath;
+        }
+        $category->update($inputs);
+        return redirect()->route('admin.categorise');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+
+
+        if ($category->image) {
+            Storage::disk('public')->delete($category->image);
+        }
+
+        $category->delete();
+        return redirect()->back();
     }
 }

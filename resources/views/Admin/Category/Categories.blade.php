@@ -57,9 +57,22 @@
                                 alt=""></a>
                             </td>
                             <td>{{ jdate( $category->created_at) }}</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="{{ route('admin.category.edit') }}" class="item-edit " title="ویرایش"></a>
+                            <td>     <div class="d-flex">
+                                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+
+
+                                    <button type="submit" class="item-delete mlg-15" title="حذف"></button>
+
+
+
+                                </form>
+
+
+                                <a href="{{ route('admin.category.edit', $category->id) }}" class="item-edit " title="ویرایش"></a>
+
+                            </div>
                             </td>
                         </tr>
                         @endforeach

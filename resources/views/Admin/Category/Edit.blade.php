@@ -45,8 +45,8 @@
                     @enderror
                     <label for="">وضعیت</label>
                     <select name="status" id="">
-                        <option value="0" @if (old('status') == 0) selected @endif>فعال</option>
-                        <option value="1" @if (old('status') == 1) selected @endif>غیر فعال</option>
+                        <option value="0" @if (old('status', $category->status ==0) ) selected @endif>فعال</option>
+                        <option value="1" @if (old('status', $category->status ==1) ) selected @endif>غیر فعال</option>
                     </select>
 
                     @error('status')
@@ -61,7 +61,7 @@
                     @enderror
 
                     <label for="">توضیحات</label>
-                    <textarea class="text" name="description"> "{{ old('description') }}"</textarea>
+                    <textarea class="text" name="description"> "{{ old('description', $category->description) }}"</textarea>
 
                     @error('description')
                         <span class="red-color">{{ $message }}</span>
