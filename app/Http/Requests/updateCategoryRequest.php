@@ -23,10 +23,10 @@ class updateCategoryRequest extends FormRequest
     {
         return [
 
-"title"=>"required",
-"status"=>"required|in:0,1",
-"description"=>"required",
-"image"=>"required|mimes:png,jpg,webp,jpeg",
+            "title" => "required",
+            "status" => "required|in:0,1",
+            "description" => "required",
+            "image" => "nullable|mimes:png,jpg,webp,jpeg",
 
         ];
     }

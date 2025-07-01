@@ -35,8 +35,10 @@
             </div>
 
             <div class="user-info bg-white padding-30 font-size-13">
-                <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.category.update', $category->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <label for="">نام دسته بندی</label>
                     <input type="text" name="title" class="text" value="{{ old('title', $category->title) }}">
 
@@ -45,8 +47,8 @@
                     @enderror
                     <label for="">وضعیت</label>
                     <select name="status" id="">
-                        <option value="0" @if (old('status', $category->status ==0) ) selected @endif>فعال</option>
-                        <option value="1" @if (old('status', $category->status ==1) ) selected @endif>غیر فعال</option>
+                        <option value="0" @if (old('status', $category->status == 0)) selected @endif>فعال</option>
+                        <option value="1" @if (old('status', $category->status == 1)) selected @endif>غیر فعال</option>
                     </select>
 
                     @error('status')

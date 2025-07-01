@@ -82,7 +82,7 @@ class CategoryController extends Controller
             $inputs['image'] = $imagePath;
         }
         $category->update($inputs);
-        return redirect()->route('admin.categorise');
+        return redirect()->route('admin.categories');
     }
 
 
