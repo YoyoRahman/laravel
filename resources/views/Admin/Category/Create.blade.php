@@ -22,8 +22,8 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="{{ asset('index') }}" title="پیشخوان">پیشخوان</a></li>
-                <li><a href="{{ asset('index/category') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
+                <li><a href="{{ route('admin.index') }}" title="پیشخوان">پیشخوان</a></li>
+                <li><a href="{{ route('admin.categories') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -34,6 +34,8 @@
                 </div>
             </div>
 
+
+
             <div class="user-info bg-white padding-30 font-size-13">
                 <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -43,6 +45,9 @@
                     @error('title')
                         <span class="red-color">{{ $message }}</span>
                     @enderror
+
+
+                    
                     <label for="">وضعیت</label>
                     <select name="status" id="">
                         <option value="0" @if (old('status') == 0) selected @endif>فعال</option>

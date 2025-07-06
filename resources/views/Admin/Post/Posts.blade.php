@@ -47,45 +47,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($posts as $post)
+
                         <tr role="row">
-                            <td>1</td>
-                            <td>middleware</td>
-                            <td>لاراول</td>
-                            <td class="text-success">فعال</td>
-                            <td><a href=""><img class="img__slideshow" src="img/laravel.jpg" alt=""></a>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $post->category_id }}</td>
+                            <td class="text-success">{{ $post->status  == 0 ? " فعال" : "غیر فعال"}}</td>
+
+                            <td class="text-success">{{ $post->post_type  == 0 ? " فعال" : "غیر فعال"}}</td>
+
+
+
+                            <td><a href=""><img class="img__slideshow" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title  }}"></a>
                             </td>
-                            <td>1403/05/01</td>
+                            <td>{{ jdate( $post->created_at) }}</td>
+
                             <td>
                                 <a href="" class="item-delete mlg-15" title="حذف"></a>
                                 <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
                             </td>
                         </tr>
-                        <tr role="row">
-                            <td>1</td>
-                            <td>middleware</td>
-                            <td>لاراول</td>
-                            <td class="text-success">فعال</td>
-                            <td><a href=""><img class="img__slideshow" src="img/laravel.jpg" alt=""></a>
-                            </td>
-                            <td>1403/05/01</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                            </td>
-                        </tr>
-                        <tr role="row">
-                            <td>1</td>
-                            <td>middleware</td>
-                            <td>لاراول</td>
-                            <td class="text-success">فعال</td>
-                            <td><a href=""><img class="img__slideshow" src="img/laravel.jpg" alt=""></a>
-                            </td>
-                            <td>1403/05/01</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="edit-comment.html" class="item-edit " title="ویرایش"></a>
-                            </td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

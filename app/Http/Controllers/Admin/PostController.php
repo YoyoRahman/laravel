@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 class PostController extends Controller
 {
@@ -12,10 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();
+        $posts = Post::all();
         return view(
-            'Admin.Post.Posts',
-            // compact('posts')
+            'Admin.Post.Posts',compact('posts')
         );
     }
 
@@ -32,7 +33,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $inputs = $request->all();
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->store('post_image', 'public');
+            $inputs['image'] = $imagePath;
+        }
+        Post::create($inputs);
+        return redirect()->route('admin.posts');
     }
 
     /**

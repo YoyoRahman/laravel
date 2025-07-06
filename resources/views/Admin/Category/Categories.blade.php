@@ -22,15 +22,15 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="{{ asset('index') }}" title="پیشخوان">پیشخوان</a></li>
-                <li><a href="{{ asset('index/category') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
+                <li><a href="{{ route('admin.index') }}" title="پیشخوان">پیشخوان</a></li>
+                <li><a href="{{ route('admin.categories') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
             </ul>
         </div>
         <div class="main-content">
             <div class="tab__box">
                 <div class="tab__items">
-                    <a class="tab__item is-active" href="{{ asset('index/category') }}">دسته بندی‌ها</a>
-                    <a class="tab__item" href="{{ asset('index/create') }}">ایجاد دسته بندی جدید</a>
+                    <a class="tab__item is-active" href="{{ route('admin.categories') }}">دسته بندی‌ها</a>
+                    <a class="tab__item" href="{{ route('admin.category.create') }}">ایجاد دسته بندی جدید</a>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
 
 
                                 </form>
-
+ 
 
                                 <a href="{{ route('admin.category.edit', $category->id) }}" class="item-edit " title="ویرایش"></a>
 

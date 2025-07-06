@@ -24,7 +24,7 @@ Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->n
 
 Route::get('/index/posts', [PostController::class, 'index'])->name('admin.posts');
 Route::get('/index/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
-// Route::post('/index/store', [CategoryController::class, 'store'])->name('admin.category.store');
+Route::post('/index/store', [PostController::class, 'store'])->name('admin.posts.store');
 // Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
 // Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('admin.category.update');
 // Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');

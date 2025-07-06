@@ -22,8 +22,8 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html" title="پیشخوان">پیشخوان</a></li>
-                <li><a href="categories.html" title=" دوره ها" class="is-active"> دوره ها</a></li>
+                <li><a href="{{ route('admin.index') }}" title="پیشخوان">پیشخوان</a></li>
+                <li><a href="{{ route('admin.categories') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -35,10 +35,16 @@
             </div>
 
             <div class="user-info bg-white padding-30 font-size-13">
-                <form action="">
+                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
 
                     <label for="">عنوان مقاله</label>
-                    <input type="text" class="text" value="">
+                    <input type="text" class="text" value="{{ old('title') }}">
+
+                    @error('title')
+                        <span class="red-color">{{ $message }}</span>
+                    @enderror
 
                     <label for="">دسته بندی</label>
                     <select name="cat_id" id="">
@@ -49,18 +55,31 @@
 
                     <label for="">وضعیت</label>
                     <select name="status" id="">
-                        <option value="0">فعال</option>
-                        <option value="1">غیر فعال</option>
+                        <option value="0" @if (old('status') == 0) selected @endif>فعال</option>
+                        <option value="1" @if (old('status') == 1) selected @endif>غیر فعال</option>
                     </select>
+                       @error('status')
+                        <span class="red-color">{{ $message }}</span>
+                       @enderror
 
                     <label for="">تصویر</label>
                     <input type="file" class="text" value="">
 
+                    @error('image')
+                        <span class="red-color">{{ $message }}</span>
+                    @enderror
+
+
+
                     <label for="">متن مقاله</label>
-                    <textarea class="text"></textarea>
+                    <textarea class="text" name="body"> "{{ old('body') }}"</textarea>
+
+                    @error('body')
+                        <span class="red-color">{{ $message }}</span>
+                    @enderror
 
                     <br>
-                    <button class="btn btn-netcopy_net">ذخیره تغییرات</button>
+                    <button type="submit" class="btn btn-netcopy_net">ذخیره تغییرات</button>
                 </form>
             </div>
 
