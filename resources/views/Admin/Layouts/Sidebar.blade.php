@@ -12,7 +12,7 @@
            <li class="item-li i-dashboard is-active"><a href="{{ route('admin.index') }}">پیشخوان</a></li>
            <li class="item-li i-courses"><a href="{{ route('admin.categories') }}">دسته بندی‌ها</a></li>
            <li class="item-li i-users"><a href="{{ asset('index/category') }}"> کاربران</a></li>
-           <li class="item-li i-banners"><a href="banners.html">بنر ها</a></li>
+           <li class="item-li i-banners"><a href="{{ route('admin.banners') }}">بنر ها</a></li>
            <li class="item-li i-articles"><a href="{{ route('admin.posts') }}">مقالات</a></li>
            <li class="item-li i-comments"><a href="comments.html"> نظرات</a></li>
        </ul>

@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestCategory extends FormRequest
+class updatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return  true;
+        return false;
     }
 
     /**
@@ -22,12 +22,10 @@ class RequestCategory extends FormRequest
     public function rules(): array
     {
         return [
-            "title"=>"required",
-            //  "post_type"=>"required",
-            // "category_id"=>"required",
-            "status"=>"required|in:0,1",
-            "description"=>"required",
-            "image"=>"required|mimes:png,jpg,webp,jpeg",
+                   "title" => "required",
+            "status" => "required|in:0,1",
+            "body" => "required",
+            "image" => "nullable|mimes:png,jpg,webp,jpeg",
         ];
     }
 }

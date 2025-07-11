@@ -29,18 +29,18 @@
         <div class="main-content">
             <div class="tab__box">
                 <div class="tab__items">
-                    <a class="tab__item " href="articles.html">لیست مقالات</a>
-                    <a class="tab__item is-active" href="create-article.html">ایجاد مقاله جدید</a>
+                    <a class="tab__item " href="{{ route('admin.posts') }}">لیست مقالات</a>
+                    <a class="tab__item is-active" href="{{route('admin.posts.create')}}">ایجاد مقاله جدید</a>
                 </div>
             </div>
 
             <div class="user-info bg-white padding-30 font-size-13">
                 <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+                    @csrf
 
 
                     <label for="">عنوان مقاله</label>
-                    <input type="text" class="text" value="{{ old('title') }}">
+                    <input type="text" name="title" class="text" value="{{ old('title') }}">
 
                     @error('title')
                         <span class="red-color">{{ $message }}</span>
@@ -58,9 +58,9 @@
                         <option value="0" @if (old('status') == 0) selected @endif>فعال</option>
                         <option value="1" @if (old('status') == 1) selected @endif>غیر فعال</option>
                     </select>
-                       @error('status')
+                    @error('status')
                         <span class="red-color">{{ $message }}</span>
-                       @enderror
+                    @enderror
 
                     <label for="">تصویر</label>
                     <input type="file" class="text" value="">

@@ -22,33 +22,36 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="{{ asset('index') }}" title="پیشخوان">پیشخوان</a></li>
-                <li><a href="{{ asset('index/category') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
+                <li><a href="{{ route('admin.index') }}" title="پیشخوان">پیشخوان</a></li>
+                <li><a href="{{ route('admin.categories') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
             </ul>
         </div>
         <div class="main-content">
             <div class="tab__box">
                 <div class="tab__items">
-                    <a class="tab__item " href="{{ asset('index/category') }}">دسته بندی‌ها</a>
-                    <a class="tab__item is-active" href="{{ asset('index/category/create') }}">ویرایش دسته بندی</a>
+                    <a class="tab__item " href="{{ route('admin.banners') }}">بنر ها</a>
+                    <a class="tab__item is-active" href="{{ route('admin.banner.create') }}">ایجاد بنر جدید</a>
                 </div>
             </div>
 
+
+
             <div class="user-info bg-white padding-30 font-size-13">
-                <form action="{{ route('admin.category.update', $category->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
-                    <label for="">نام دسته بندی</label>
-                    <input type="text" name="title" class="text" value="{{ old('title', $category->title) }}">
+                    <label for="">نام بنر</label>
+                    <input type="text" name="title" class="text" value="{{ old('title') }}">
 
                     @error('title')
                         <span class="red-color">{{ $message }}</span>
                     @enderror
+
+
+
                     <label for="">وضعیت</label>
                     <select name="status" id="">
-                        <option value="0" @if (old('status', $category->status == 0)) selected @endif>فعال</option>
-                        <option value="1" @if (old('status', $category->status == 1)) selected @endif>غیر فعال</option>
+                        <option value="0" @if (old('status') == 0) selected @endif>فعال</option>
+                        <option value="1" @if (old('status') == 1) selected @endif>غیر فعال</option>
                     </select>
 
                     @error('status')
@@ -63,7 +66,7 @@
                     @enderror
 
                     <label for="">توضیحات</label>
-                    <textarea class="text" name="description"> "{{ old('description', $category->description) }}"</textarea>
+                    <textarea class="text" name="description"> "{{ old('description') }}"</textarea>
 
                     @error('description')
                         <span class="red-color">{{ $message }}</span>
@@ -78,20 +81,3 @@
         </div>
     </div>
 @endsection
-<?php
-public function update(RequestPost $request, Post $post)
-{
-    $inputs = $request->only(['title', 'body', 'status', 'category_id']);
-
-    if ($request->hasFile('image')) {
-        // حذف عکس قبلی اگر وجود دارد
-        if ($post->image) {
-            Storage::disk('public')->delete($post->image);
-        }
-        $inputs['image'] = $request->file('image')->store('post_images', 'public');
-    }
-
-    $post->update($inputs);
-    return redirect()->route('admin.posts');
-}
-?>
