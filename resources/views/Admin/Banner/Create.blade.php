@@ -23,7 +23,7 @@
         <div class="breadcrumb">
             <ul>
                 <li><a href="{{ route('admin.index') }}" title="پیشخوان">پیشخوان</a></li>
-                <li><a href="{{ route('admin.categories') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
+                <li><a href="{{ route('admin.banners') }}" title=" بنر ها" class="is-active"> بنر ها</a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -66,7 +66,7 @@
                     @enderror
 
                     <label for="">توضیحات</label>
-                    <textarea class="text" name="description"> "{{ old('description') }}"</textarea>
+                    <textarea class="text" name="description"> {{ old('description') }}</textarea>
 
                     @error('description')
                         <span class="red-color">{{ $message }}</span>

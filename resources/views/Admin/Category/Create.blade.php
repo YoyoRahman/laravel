@@ -37,7 +37,7 @@
 
 
             <div class="user-info bg-white padding-30 font-size-13">
-                <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <label for="">نام دسته بندی</label>
                     <input type="text" name="title" class="text" value="{{ old('title') }}">
@@ -47,7 +47,7 @@
                     @enderror
 
 
-                    
+
                     <label for="">وضعیت</label>
                     <select name="status" id="">
                         <option value="0" @if (old('status') == 0) selected @endif>فعال</option>
@@ -66,7 +66,7 @@
                     @enderror
 
                     <label for="">توضیحات</label>
-                    <textarea class="text" name="description"> "{{ old('description') }}"</textarea>
+                    <textarea class="text" name="description"> {{ old('description') }}</textarea>
 
                     @error('description')
                         <span class="red-color">{{ $message }}</span>

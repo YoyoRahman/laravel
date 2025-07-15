@@ -22,15 +22,15 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="{{ asset('index') }}" title="پیشخوان">پیشخوان</a></li>
-                <li><a href="{{ asset('index/category') }}" title=" دوره ها" class="is-active"> دوره ها</a></li>
+                <li><a href="{{ route('amin.index') }}" title="پیشخوان">پیشخوان</a></li>
+                <li><a href="{{ route('admin.categories') }}" title=" بنر ها" class="is-active"> بنر ها</a></li>
             </ul>
         </div>
         <div class="main-content">
             <div class="tab__box">
                 <div class="tab__items">
-                    <a class="tab__item " href="{{ asset('index/category') }}">دسته بندی‌ها</a>
-                    <a class="tab__item is-active" href="{{ asset('index/category/create') }}">ویرایش دسته بندی</a>
+                    <a class="tab__item " href="{{ route('admin.categories') }}">بنر ها</a>
+                    <a class="tab__item is-active" href="{{ route('admin.category.edit') }}">ویرایش بنر ها</a>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                     @enderror
 
                     <label for="">توضیحات</label>
-                    <textarea class="text" name="description"> "{{ old('description', $category->description) }}"</textarea>
+                    <textarea class="text" name="description"> {{ old('description', $category->description) }}</textarea>
 
                     @error('description')
                         <span class="red-color">{{ $message }}</span>
@@ -78,20 +78,3 @@
         </div>
     </div>
 @endsection
-<?php
-public function update(RequestPost $request, Post $post)
-{
-    $inputs = $request->only(['title', 'body', 'status', 'category_id']);
-
-    if ($request->hasFile('image')) {
-        // حذف عکس قبلی اگر وجود دارد
-        if ($post->image) {
-            Storage::disk('public')->delete($post->image);
-        }
-        $inputs['image'] = $request->file('image')->store('post_images', 'public');
-    }
-
-    $post->update($inputs);
-    return redirect()->route('admin.posts');
-}
-?>

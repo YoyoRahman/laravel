@@ -30,7 +30,7 @@
             <div class="tab__box">
                 <div class="tab__items">
                     <a class="tab__item is-active" href="{{ route('admin.banners') }}">بنر ها</a>
-                    <a class="tab__item" href="">ایجاد بنر جدید</a>
+                    <a class="tab__item" href="{{ route('admin.banner.create') }}">ایجاد بنر جدید</a>
                 </div>
             </div>
 
@@ -58,7 +58,11 @@
                                 <td>{{ jdate($banner->created_at) }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <form action="{{ route('admin.banner.destroy', $banner->id) }}" method="POST">
+                                        <form
+                                            action="
+                                        {{ route('admin.banner.destroy', $banner->id) }}
+                                         "
+                                            method="POST">
                                             @csrf
                                             @method('delete')
 
@@ -70,8 +74,10 @@
                                         </form>
 
 
-                                        <a href="{{ route('admin.banner.edit', $banner->id) }}" class="item-edit "
-                                            title="ویرایش"></a>
+                                        <a href="
+                                        {{ route('admin.banner.edit', $banner->id) }}
+                                         "
+                                            class="item-edit " title="ویرایش"></a>
 
                                     </div>
                                 </td>

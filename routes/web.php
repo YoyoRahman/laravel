@@ -33,8 +33,11 @@ Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('admin.p
 
 
 Route::get('/index/banners', [BannerController::class, 'index'])->name('admin.banners');
-// Route::get('/index/create', [BannerController::class, 'create'])->name('admin.banner.create');
-// Route::post('/index/store', [BannerController::class, 'store'])->name('admin.banner.store');
-// Route::get('/banner/{banner}/edit', [BannerController::class, 'edit'])->name('admin.banner.edit');
-// Route::put('/banner/{banner}/update', [BannerController::class, 'update'])->name('admin.banner.update');
-// Route::delete('/banner/{banner}', [BannerController::class, 'destroy'])->name('admin.banner.destroy');
+Route::get('/index/create', [BannerController::class, 'create'])->name('admin.banner.create');
+Route::post('/index/store', [BannerController::class, 'store'])->name('admin.banner.store');
+Route::get('/banner/{banner}/edit', [BannerController::class, 'edit'])->name('admin.banner.edit');
+Route::put('/banner/{banner}/update', [BannerController::class, 'update'])->name('admin.banner.update');
+Route::delete('/banner/{banner}', [BannerController::class, 'destroy'])->name('admin.banner.destroy');
+
+
+//Front
